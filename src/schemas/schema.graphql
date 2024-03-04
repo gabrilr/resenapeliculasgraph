@@ -1,0 +1,36 @@
+
+type Pelicula {
+  _id: ID!
+  titulo: String!
+  genero: String
+  director: String!
+  meGusta: Int
+  noMeGusta: Int
+  compartido: Int
+  destacado: Boolean
+}
+
+input NuevaPelicula {
+  titulo: String!
+  genero: String
+  director: String!
+  meGusta: Int
+  noMeGusta: Int
+  compartido: Int
+  destacado: Boolean
+}
+
+type Query {
+  peliculas: [Pelicula]
+  pelicula(id: ID!): Pelicula
+}
+
+type Mutation {
+  crearPelicula(pelicula: NuevaPelicula): Pelicula
+  actualizarPelicula(id: ID!, pelicula: NuevaPelicula): Pelicula
+  eliminarPelicula(id: ID!): Pelicula
+  incrementarMeGusta(id: ID!): Pelicula
+  incrementarNoMeGusta(id: ID!): Pelicula
+  decrementarCompartido(id: ID!): Pelicula
+  marcarDestacado(id: ID!, destacado: Boolean!): Pelicula
+}
